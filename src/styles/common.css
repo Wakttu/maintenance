@@ -1,0 +1,27 @@
+/* Fonts */
+html[lang="ko"] {
+  font-family: "Wanted Sans Variable", "Wanted Sans", sans-serif;
+}
+
+/* Common */
+:root {
+  background-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #0c0d0e;
+  }
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+button,
+a {
+  cursor: pointer;
+}

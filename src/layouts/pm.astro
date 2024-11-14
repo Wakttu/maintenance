@@ -1,0 +1,81 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import GlobalLayout from "./global.astro";
+
+import contentStyles from "../styles/content.module.scss";
+import pmStyles from "../styles/pm.module.scss";
+
+import $t from "../locales/layouts/pm.json";
+
+enum EPmLevel {
+  PLANNED = "planned",
+  EMERGENCY = "emergency",
+}
+
+type Props = MarkdownLayoutProps<{
+  level: EPmLevel;
+  pm_time: string;
+  notice_url: string;
+}>;
+
+const { frontmatter } = Astro.props;
+---
+
+<GlobalLayout title={$t["ko"].title[frontmatter.level]}>
+  <main>
+    <section class={contentStyles.container}>
+      <h1 class={contentStyles.title}>
+        {$t["ko"].title[frontmatter.level]}
+      </h1>
+
+      <p
+        class={contentStyles.message}
+        style={{ whiteSpace: "pre-wrap", marginBlockEnd: "1em" }}
+      >
+        {$t["ko"].message}
+      </p>
+
+      <div>
+        <h2 class={pmStyles.title}>{$t["ko"].detail.time}</h2>
+        <p class={pmStyles.content}>{frontmatter.pm_time}</p>
+
+        <h2 class={pmStyles.title}>{$t["ko"].detail.content}</h2>
+        <article class={pmStyles.content}>
+          <slot />
+        </article>
+
+        <p
+          class={pmStyles.content}
+          style={{ marginTop: "38px", fontSize: "12px" }}
+        >
+          {
+            $t["ko"].detail.notice.map((notice) => (
+              <>
+                · {notice.replaceAll("{EMAIL}", "admin@wakttu.kr")}
+                <br />
+              </>
+            ))
+          }
+        </p>
+      </div>
+    </section>
+
+    <section class={contentStyles.btns}>
+      <button id="back-btn">{$t["ko"].buttons.back}</button>
+      <a
+        href={frontmatter.notice_url}
+        role="button"
+        target="_blank"
+        rel="norefferer"
+      >
+        {$t["ko"].buttons.notice}
+      </a>
+    </section>
+  </main>
+
+  <script>
+    document.querySelector("#back-btn")!.addEventListener("click", () => {
+      window.history.go(-1);
+    });
+  </script>
+</GlobalLayout>
