@@ -5,6 +5,8 @@ import GlobalLayout from "./global.astro";
 import contentStyles from "../styles/content.module.scss";
 import pmStyles from "../styles/pm.module.scss";
 
+import ButtonGroup from "../components/ButtonGroup.astro";
+
 import $t from "../locales/layouts/pm.json";
 
 enum EPmLevel {
@@ -59,8 +61,8 @@ const { frontmatter } = Astro.props;
         </p>
       </div>
     </section>
-
-    <section class={contentStyles.btns}>
+    
+    <ButtonGroup>
       <button id="back-btn">{$t["ko"].buttons.back}</button>
       <a
         href={frontmatter.notice_url}
@@ -70,7 +72,7 @@ const { frontmatter } = Astro.props;
       >
         {$t["ko"].buttons.notice}
       </a>
-    </section>
+    </ButtonGroup>
   </main>
 
   <script>
