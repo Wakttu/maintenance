@@ -20,5 +20,5 @@
     "sass": "^1.83.1",
     "typescript": "^5.7.2"
   },
-  "packageManager": "pnpm@10.0.0-rc.3+sha512.5be0426818bc14eedfa404e2d64e10acdb5073c72dd5b78eb0b7d16ad743e817ceda0cb9309a05137da2eda405f3423899fd89217ff2d7f50c79758176cef6cc"
+  "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6"
 }
